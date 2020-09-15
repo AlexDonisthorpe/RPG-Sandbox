@@ -8,7 +8,7 @@ public class Mover : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetMouseButtonDown(1)){
+        if(Input.GetMouseButton(1)){
             moveToCursor();
         }
         UpdateAnimator();
