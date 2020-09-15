@@ -11,6 +11,7 @@ public class Mover : MonoBehaviour
         if(Input.GetMouseButtonDown(1)){
             moveToCursor();
         }
+        UpdateAnimator();
     }
 
     private void moveToCursor()
@@ -21,5 +22,13 @@ public class Mover : MonoBehaviour
         if(hasHit){
             GetComponent<NavMeshAgent>().SetDestination(hit.point);
         }
+    }
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }

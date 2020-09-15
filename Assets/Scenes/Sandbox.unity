@@ -4319,30 +4319,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 413494, guid: c2849fd453abd0445a702a035f04ac60, type: 3}
   m_PrefabInstance: {fileID: 1686699750}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1704982269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 968406388124237240, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
-  m_PrefabInstance: {fileID: 6273393511566217648}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1704982270
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704982269}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04051f05e7d2cbf45b848b33eccbc680, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1717459592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5912,6 +5888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1016435602, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 968406388124237240, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5975,7 +5955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8622598907129833524, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8622598907129833524, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6020,6 +6000,18 @@ PrefabInstance:
     - target: {fileID: 8622598907129833526, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
       propertyPath: m_Name
       value: Follow Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622598907655965775, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622598907655965775, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622598907655965775, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
