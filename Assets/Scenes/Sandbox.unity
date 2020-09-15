@@ -5888,10 +5888,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1016435602, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 5000
-      objectReference: {fileID: 0}
     - target: {fileID: 968406388124237240, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6000,18 +5996,6 @@ PrefabInstance:
     - target: {fileID: 8622598907129833526, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
       propertyPath: m_Name
       value: Follow Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 8622598907655965775, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 8622598907655965775, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 8622598907655965775, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d55572043bcfd2d4ea9715cd1d36f8c6, type: 3}
