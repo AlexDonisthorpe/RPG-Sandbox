@@ -8,20 +8,12 @@ public class Mover : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetMouseButton(1)){
-            moveToCursor();
-        }
         UpdateAnimator();
     }
 
-    private void moveToCursor()
+    public void MoveTo(Vector3 hit)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        bool hasHit = Physics.Raycast(ray, out hit);
-        if(hasHit){
-            GetComponent<NavMeshAgent>().SetDestination(hit.point);
-        }
+        GetComponent<NavMeshAgent>().SetDestination(hit);
     }
 
     private void UpdateAnimator()
