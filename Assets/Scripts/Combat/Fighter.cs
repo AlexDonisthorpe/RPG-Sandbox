@@ -40,9 +40,15 @@ public class Fighter : MonoBehaviour, IAction
             transform.LookAt(target.transform);
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
-                GetComponent<Animator>().SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0;
             }
+        }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attackCancel");
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         public bool CanAttack(CombatTarget combatTarget){
@@ -61,13 +67,21 @@ public class Fighter : MonoBehaviour, IAction
             target = combatTarget.GetComponent<Health>();
         }
 
-        public void Cancel(){
-            GetComponent<Animator>().SetTrigger("attackCancel");
+        public void Cancel()
+        {
+            StopAttack();
             target = null;
+        }
+
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("attackCancel");
         }
 
         // Hit event is triggered during the attack animation
         void Hit(){
+            if(target == null) return;
             target.TakeDamage(weaponDamage);
         }
     }
