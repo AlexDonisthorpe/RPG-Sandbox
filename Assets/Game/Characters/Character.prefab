@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2035b4d66f42d944db53a2b86bc97bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
+  weaponRange: 1.5
   timeBetweenAttacks: 1
   weaponDamage: 5
 --- !u!114 &8758121803209134208
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e995add1a01be2646bf70989336b1c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  healthPoints: 100
 --- !u!50 &3515951426137024384
 Rigidbody2D:
   serializedVersion: 4

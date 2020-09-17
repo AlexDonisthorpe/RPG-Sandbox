@@ -37,6 +37,7 @@ public class Fighter : MonoBehaviour, IAction
 
         private void AttackBehaviour()
         {
+            transform.LookAt(target.transform);
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
                 GetComponent<Animator>().SetTrigger("attack");
