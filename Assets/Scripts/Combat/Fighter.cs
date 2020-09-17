@@ -25,7 +25,13 @@ public class Fighter : MonoBehaviour, IAction
             else
             {
                 mover.Cancel();
+                AttackBehaviour();
             }
+        }
+
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         private bool GetIsInRange()
@@ -40,6 +46,11 @@ public class Fighter : MonoBehaviour, IAction
 
         public void Cancel(){
             target = null;
+        }
+
+        // Animation Event
+        void Hit(){
+
         }
     }
 }
