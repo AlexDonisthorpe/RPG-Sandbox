@@ -45,6 +45,12 @@ public class Fighter : MonoBehaviour, IAction
             }
         }
 
+        public bool CanAttack(CombatTarget combatTarget){
+            if(combatTarget == null) return false;
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
+        }
+
         private bool GetIsInRange()
         {
             return Vector3.Distance(gameObject.transform.position, target.transform.position) <= weaponRange;
