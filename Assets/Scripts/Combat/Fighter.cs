@@ -11,7 +11,7 @@ public class Fighter : MonoBehaviour, IAction
         [SerializeField] float weaponDamage = 5f;
 
         float timeSinceLastAttack = 1;
-        Transform target;
+        Health target;
         Mover mover;
 
         private void Start(){
@@ -22,11 +22,11 @@ public class Fighter : MonoBehaviour, IAction
         {
             timeSinceLastAttack += Time.deltaTime;
 
-            if (target == null) return;
+            if (target == null || target.IsDead()) return;
 
             if (target != null && !GetIsInRange())
             {
-                mover.MoveTo(target.position);
+                mover.MoveTo(target.transform.position);
             }
             else
             {
@@ -46,21 +46,22 @@ public class Fighter : MonoBehaviour, IAction
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(gameObject.transform.position, target.position) <= weaponRange;
+            return Vector3.Distance(gameObject.transform.position, target.transform.position) <= weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget){
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
         }
 
         public void Cancel(){
+            GetComponent<Animator>().SetTrigger("attackCancel");
             target = null;
         }
 
         // Hit event is triggered during the attack animation
         void Hit(){
-            target.GetComponent<Health>().TakeDamage(weaponDamage);
+            target.TakeDamage(weaponDamage);
         }
     }
 }
