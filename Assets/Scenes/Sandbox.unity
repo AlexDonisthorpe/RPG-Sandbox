@@ -592,6 +592,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2679578323395147579, guid: ca425456d29ffd74aa9033e50d2068c2, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6270016942530620895, guid: ca425456d29ffd74aa9033e50d2068c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.2776423
