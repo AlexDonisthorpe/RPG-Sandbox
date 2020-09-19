@@ -10,7 +10,7 @@ public class Fighter : MonoBehaviour, IAction
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
 
-        float timeSinceLastAttack = 1;
+        float timeSinceLastAttack = Mathf.Infinity;
         Health target;
         Mover mover;
 
