@@ -10,10 +10,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.22789632
+  m_Radius: 0.53449214
   m_Height: 2.1045728
   m_Direction: 1
-  m_Center: {x: 0.00539656, y: 1.0187328, z: 0}
+  m_Center: {x: -0.0010510683, y: 1.0187328, z: 0}
 --- !u!114 &344979266397230692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,6 +39,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 5
+  suspicionTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  waypointDawdlingTime: 2
 --- !u!1001 &2298586884443860077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48,7 +52,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1016435602, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_Speed
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 968406388124237240, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_Name
@@ -60,7 +64,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2193512217123377892, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: healthPoints
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4043592050027763971, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -105,6 +109,14 @@ PrefabInstance:
     - target: {fileID: 4043592050027763971, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346314757270242279, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
+      propertyPath: weaponDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346314757270242279, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 127537809, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
