@@ -43,6 +43,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointDawdlingTime: 2
+  patrolSpeedFraction: 0.5
 --- !u!1001 &2298586884443860077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,7 +53,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1016435602, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_Speed
-      value: 2.5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016435607, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
+      propertyPath: maxSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 968406388124237240, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: m_Name

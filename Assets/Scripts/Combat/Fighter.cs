@@ -31,7 +31,7 @@ public class Fighter : MonoBehaviour, IAction
                 {
                     GetComponent<Animator>().SetTrigger("attackCancel");
                 }
-                mover.MoveTo(target.transform.position);
+                mover.MoveTo(target.transform.position, 1f);
             }
             else
             {
