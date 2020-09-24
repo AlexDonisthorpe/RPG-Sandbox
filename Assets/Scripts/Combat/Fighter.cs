@@ -77,6 +77,7 @@ public class Fighter : MonoBehaviour, IAction
         {
             StopAttack();
             target = null;
+            mover.Cancel();
         }
 
         private void StopAttack()

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef45c3ed1457044abd51954eaf04765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 5.66
 --- !u!95 &1704982270
 Animator:
   serializedVersion: 3
@@ -145,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRange: 1.5
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 0.6
   weaponDamage: 5
 --- !u!114 &8758121803209134208
 MonoBehaviour:

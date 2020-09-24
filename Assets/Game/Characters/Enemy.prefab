@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346314757270242279, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 127537809, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
