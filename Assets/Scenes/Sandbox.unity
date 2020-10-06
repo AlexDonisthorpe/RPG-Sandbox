@@ -2365,7 +2365,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.3e-44, z: 3.321e-42, w: 1.04e-43}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4324,6 +4324,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 493576, guid: d6389bfdb7e456640b3a45339aac60a4, type: 3}
   m_PrefabInstance: {fileID: 1587676978}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1182650346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7092697454035159396, guid: ca425456d29ffd74aa9033e50d2068c2, type: 3}
+  m_PrefabInstance: {fileID: 219802558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1182650356
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182650346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1203903193
 GameObject:
   m_ObjectHideFlags: 0
@@ -7744,6 +7763,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1fcd0c4979ed334ea2c2d1cad3f25e8, type: 3}
+--- !u!1001 &3760904611170742116
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 429730907137345445, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: sceneToLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992586401618947119, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_Name
+      value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650651746734640485, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 253a81d49b1ac2a4099b16399b4a861a, type: 3}
 --- !u!1001 &5680606558895751488
 PrefabInstance:
   m_ObjectHideFlags: 0
