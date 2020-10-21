@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
@@ -13,10 +14,12 @@ namespace RPG.Saving
             
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
-                byte[] bytes = Encoding.UTF8.GetBytes("¡Insert Save Data Here!");
-                stream.Write(bytes, 0, bytes.Length);
+                Transform playerTransform = GetPlayerTransform();
+                byte[] buffer = SerializeVector(playerTransform.position);
+                stream.Write(buffer, 0, buffer.Length);
             }
         }
+
         public void Load(string saveFile)
         {
             string path = GetPathFromSaveFile(saveFile);
@@ -26,8 +29,33 @@ namespace RPG.Saving
             {
                 byte[] byteBuffer = new byte[stream.Length];
                 stream.Read(byteBuffer, 0, byteBuffer.Length);
-                print(Encoding.UTF8.GetString(byteBuffer));    
+                GetPlayerTransform().position = DeserializeVector(byteBuffer);
             }
+        }
+
+        private Transform GetPlayerTransform()
+        {
+            return GameObject.FindWithTag("Player").transform;
+        }
+
+        private byte[] SerializeVector(Vector3 vector)
+        {
+            byte[] vectorBytes = new byte[3 * 4];
+            BitConverter.GetBytes(vector.x).CopyTo(vectorBytes, 0);
+            BitConverter.GetBytes(vector.y).CopyTo(vectorBytes, 4);
+            BitConverter.GetBytes(vector.z).CopyTo(vectorBytes, 8);
+
+            return vectorBytes;
+        }
+
+        private Vector3 DeserializeVector(byte[] buffer)
+        {
+            Vector3 result = new Vector3();
+            result.x = BitConverter.ToSingle(buffer, 0);
+            result.y = BitConverter.ToSingle(buffer, 4);
+            result.z = BitConverter.ToSingle(buffer, 8);
+
+            return result;
         }
 
         private string GetPathFromSaveFile(string saveFile){
