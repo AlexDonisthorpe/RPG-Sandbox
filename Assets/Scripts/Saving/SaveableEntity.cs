@@ -42,6 +42,23 @@ namespace RPG.Saving
             }
         }
 
+        private bool isUnique(string candidate)
+        {
+            if (!globalLookup.ContainsKey(candidate) || globalLookup[candidate] == this) return true;
+            if (globalLookup[candidate] == null)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+            if (globalLookup[candidate].GetUniqueIdentifier() != candidate)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+
+            return false;
+        }
+
 # if UNITY_EDITOR
         private void Update() 
         {
@@ -58,23 +75,6 @@ namespace RPG.Saving
             }
 
             globalLookup[property.stringValue] = this;
-        }
-
-        private bool isUnique(string candidate)
-        {
-            if(!globalLookup.ContainsKey(candidate) || globalLookup[candidate] == this) return true;
-            if(globalLookup[candidate] == null)
-            {
-                globalLookup.Remove(candidate);
-                return true;
-            }
-            if(globalLookup[candidate].GetUniqueIdentifier() != candidate)
-            {
-                globalLookup.Remove(candidate);
-                return true;
-            }
-
-            return false;
         }
 #endif
     }
