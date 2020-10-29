@@ -1,6 +1,7 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using System;
 
 namespace RPG.Combat{
 
@@ -9,6 +10,9 @@ public class Fighter : MonoBehaviour, IAction
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
+        [SerializeField] AnimatorOverrideController weaponOverride = null;
 
         float timeSinceLastAttack = Mathf.Infinity;
         Health target;
@@ -16,6 +20,7 @@ public class Fighter : MonoBehaviour, IAction
 
         private void Start(){
             mover = GetComponent<Mover>();
+            if(weaponPrefab != null) SpawnWeapon();
         }
 
         private void Update()
@@ -90,6 +95,13 @@ public class Fighter : MonoBehaviour, IAction
         void Hit(){
             if(target == null) return;
             target.TakeDamage(weaponDamage);
+        }
+
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefab, handTransform);
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = weaponOverride;
         }
     }
 }
