@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine.AI;
 using RPG.Core;
 using System.Collections.Generic;
+using System;
 
 namespace RPG.Saving
 {
@@ -11,6 +12,7 @@ namespace RPG.Saving
     {
 
         [SerializeField] string uniqueIdentifier = "";
+        static Dictionary<string, SaveableEntity> globalLookup = new Dictionary<string, SaveableEntity>();
 
         public string GetUniqueIdentifier()
         {
@@ -25,7 +27,6 @@ namespace RPG.Saving
                 state[saveable.GetType().ToString()] = saveable.CaptureState();
             }
             return state;
-            // return new SerializableVector3(transform.position);
         }
 
         public void RestoreState(object state)
@@ -39,13 +40,6 @@ namespace RPG.Saving
                     saveable.RestoreState(stateDict[typeString]);
                 }
             }
-            // NavMeshAgent navMesh = GetComponent<NavMeshAgent>();
-            // SerializableVector3 newPosition = (SerializableVector3)state;
-
-            // navMesh.enabled = false;
-            // transform.position = newPosition.ToVector();
-            // navMesh.enabled = true;
-            // GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
 # if UNITY_EDITOR
@@ -57,13 +51,30 @@ namespace RPG.Saving
             SerializedObject serializedObject = new SerializedObject(this);
             SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
 
-            print("Editing...");
-
-            if(string.IsNullOrEmpty(property.stringValue))
+            if(string.IsNullOrEmpty(property.stringValue) || !isUnique(property.stringValue))
             {
                 property.stringValue = System.Guid.NewGuid().ToString();
                 serializedObject.ApplyModifiedProperties();
             }
+
+            globalLookup[property.stringValue] = this;
+        }
+
+        private bool isUnique(string candidate)
+        {
+            if(!globalLookup.ContainsKey(candidate) || globalLookup[candidate] == this) return true;
+            if(globalLookup[candidate] == null)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+            if(globalLookup[candidate].GetUniqueIdentifier() != candidate)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+
+            return false;
         }
 #endif
     }
