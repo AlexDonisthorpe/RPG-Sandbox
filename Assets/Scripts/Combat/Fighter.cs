@@ -9,15 +9,16 @@ public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon = null;
+        [SerializeField] Weapon defaultWeapon = null;
 
         float timeSinceLastAttack = Mathf.Infinity;
         Health target;
         Mover mover;
+        Weapon currentWeapon;
 
         private void Start(){
             mover = GetComponent<Mover>();
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -60,7 +61,7 @@ public class Fighter : MonoBehaviour, IAction
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(gameObject.transform.position, target.transform.position) <= weapon.GetRange();
+            return Vector3.Distance(gameObject.transform.position, target.transform.position) <= currentWeapon.GetRange();
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -91,15 +92,14 @@ public class Fighter : MonoBehaviour, IAction
         // Hit event is triggered during the attack animation
         void Hit(){
             if(target == null) return;
-            target.TakeDamage(weapon.GetDamage());
+            target.TakeDamage(currentWeapon.GetDamage());
         }
 
-        private void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
-            if(weapon == null) return;
-
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(handTransform, animator);
+            currentWeapon = weapon;
         }
     }
 }
