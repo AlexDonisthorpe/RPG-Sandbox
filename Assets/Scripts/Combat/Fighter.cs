@@ -90,10 +90,20 @@ public class Fighter : MonoBehaviour, IAction
             GetComponent<Animator>().SetTrigger("attackCancel");
         }
 
+        // The Bow animation has a locked called to "Shoot" so just redirecting to Hit
+        void Shoot()
+        {
+            Hit();
+        }
         // Hit event is triggered during the attack animation
         void Hit(){
             if(target == null) return;
-            target.TakeDamage(currentWeapon.GetDamage());
+            if(currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            } else {
+                target.TakeDamage(currentWeapon.GetDamage());
+            }
         }
 
         public void EquipWeapon(Weapon weapon)

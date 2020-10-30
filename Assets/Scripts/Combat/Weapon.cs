@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
+    using RPG.Core;
     using UnityEngine;
 
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
@@ -14,18 +15,37 @@ namespace RPG.Combat
         [SerializeField] float weaponDamage = 5f;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] bool isRightHanded = true;
+        [SerializeField] Projectile projectile = null;
 
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
-            if(equippedPrefab != null){
-                Transform handTransform;
-                if(isRightHanded) handTransform = rightHand;
-                else handTransform = leftHand;
+            if(equippedPrefab != null)
+            {
+                Transform handTransform = GetTransform(rightHand, leftHand);
                 Instantiate(equippedPrefab, handTransform);
             }
-            if(animatorOverride != null){
+            if (animatorOverride != null){
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        private Transform GetTransform(Transform rightHand, Transform leftHand)
+        {
+            Transform handTransform;
+            if (isRightHanded) handTransform = rightHand;
+            else handTransform = leftHand;
+            return handTransform;
+        }
+
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform lefthand, Health target)
+        {
+            Projectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, lefthand).position, Quaternion.identity);
+            projectileInstance.SetTarget(target);
         }
 
         public float GetDamage()
