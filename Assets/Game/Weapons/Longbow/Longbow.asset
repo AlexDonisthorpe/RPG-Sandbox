@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb2cbf72ec5f53e48888d8b29e5f8039, type: 3}
-  m_Name: Sword
+  m_Name: Longbow
   m_EditorClassIdentifier: 
-  animatorOverride: {fileID: 22100000, guid: 6560c098746a8014ca34115c85edbe46, type: 2}
-  equippedPrefab: {fileID: 981514510472124641, guid: b977cd1084804344e8b41097deef7a36, type: 3}
-  weaponDamage: 10
-  weaponRange: 3
-  isRightHanded: 1
+  animatorOverride: {fileID: 22100000, guid: 32686d48b192d484096cee5d1efc8cec, type: 2}
+  equippedPrefab: {fileID: 7724693511284396015, guid: 6bda29014be7eb242b79fc88bbd9aee0, type: 3}
+  weaponDamage: 5
+  weaponRange: 5
+  isRightHanded: 0
