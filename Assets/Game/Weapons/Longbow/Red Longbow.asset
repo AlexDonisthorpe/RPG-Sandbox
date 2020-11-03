@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb2cbf72ec5f53e48888d8b29e5f8039, type: 3}
-  m_Name: Enemy Longbow
+  m_Name: Red Longbow
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 22100000, guid: 32686d48b192d484096cee5d1efc8cec, type: 2}
   equippedPrefab: {fileID: 7724693511284396015, guid: 6bda29014be7eb242b79fc88bbd9aee0, type: 3}
