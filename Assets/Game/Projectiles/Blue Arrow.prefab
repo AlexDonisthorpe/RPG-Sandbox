@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 0.98039216
       objectReference: {fileID: 0}
+    - target: {fileID: 4238171687755366838, guid: 7601887d4f4389e48bb55bc3987d2698, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4741656313007146103, guid: 7601887d4f4389e48bb55bc3987d2698, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

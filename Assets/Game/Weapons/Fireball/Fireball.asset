@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb2cbf72ec5f53e48888d8b29e5f8039, type: 3}
-  m_Name: Red Longbow
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  animatorOverride: {fileID: 22100000, guid: 32686d48b192d484096cee5d1efc8cec, type: 2}
-  equippedPrefab: {fileID: 7724693511284396015, guid: 6bda29014be7eb242b79fc88bbd9aee0, type: 3}
-  weaponDamage: 10
-  weaponRange: 10
+  animatorOverride: {fileID: 0}
+  equippedPrefab: {fileID: 7817153351572293531, guid: 3cd09b82f3b012f40b23a7673435e7f4, type: 3}
+  weaponDamage: 15
+  weaponRange: 20
   isRightHanded: 0
-  projectile: {fileID: 2106210160899941979, guid: f940e3663266ffe409cbdcebad56cbd4, type: 3}
+  projectile: {fileID: 4238171687755366838, guid: 883c94a9e65847e408ccf7d0118837f6, type: 3}
