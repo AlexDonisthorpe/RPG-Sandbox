@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] float destroyDelay = 0.2f;
     [SerializeField] bool isHoming = false;
+    [SerializeField] GameObject hitEffect = null;
 
     Health target;
     float damage = 0;
@@ -49,6 +50,11 @@ public class Projectile : MonoBehaviour
         if(enemyHit != target) return;
         if(enemyHit.IsDead()) return;
 
+        if(hitEffect != null)
+        {
+            Instantiate(hitEffect, GetAimLocation(), transform.rotation);
+        }
+        
         enemyHit.TakeDamage(damage);
         Destroy(gameObject, destroyDelay);
 

@@ -49,6 +49,7 @@ MonoBehaviour:
   moveSpeed: 8
   destroyDelay: 0.2
   isHoming: 1
+  hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db, type: 3}
 --- !u!65 &1502209451976547160
 BoxCollider:
   m_ObjectHideFlags: 0
