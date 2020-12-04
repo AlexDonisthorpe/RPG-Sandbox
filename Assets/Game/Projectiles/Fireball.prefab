@@ -47,9 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  destroyDelay: 0.2
+  lifeAfterImpact: 1
   isHoming: 1
   hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db, type: 3}
+  maxLifeTime: 10
+  destroyOnHit:
+  - {fileID: 2839310282990157882}
 --- !u!65 &1502209451976547160
 BoxCollider:
   m_ObjectHideFlags: 0
