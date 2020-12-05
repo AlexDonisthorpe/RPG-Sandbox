@@ -1,25 +1,31 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Saving;
 using System;
 
-namespace RPG.Combat{
-
-public class Fighter : MonoBehaviour, IAction
+namespace RPG.Combat
+{
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] string defaultWeaponName = "Unarmed";
 
         float timeSinceLastAttack = Mathf.Infinity;
         Health target;
         Mover mover;
         Weapon currentWeapon;
 
-        private void Start(){
+        private void Start()
+        {
             mover = GetComponent<Mover>();
-            EquipWeapon(defaultWeapon);
+            if(currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
         }
 
         private void Update()
@@ -72,7 +78,8 @@ public class Fighter : MonoBehaviour, IAction
             return targetToTest != null && !targetToTest.IsDead();
         }
 
-        public void Attack(GameObject combatTarget){
+        public void Attack(GameObject combatTarget)
+        {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
         }
@@ -96,12 +103,15 @@ public class Fighter : MonoBehaviour, IAction
             Hit();
         }
         // Hit event is triggered during the attack animation
-        void Hit(){
-            if(target == null) return;
-            if(currentWeapon.HasProjectile())
+        void Hit()
+        {
+            if (target == null) return;
+            if (currentWeapon.HasProjectile())
             {
                 currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
-            } else {
+            }
+            else
+            {
                 target.TakeDamage(currentWeapon.GetDamage());
             }
         }
@@ -111,6 +121,18 @@ public class Fighter : MonoBehaviour, IAction
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
             currentWeapon = weapon;
+        }
+
+        public object CaptureState()
+        {
+            return currentWeapon.name;
+        }
+
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            Weapon newWeapon = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(newWeapon);
         }
     }
 }
