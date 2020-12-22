@@ -8,7 +8,7 @@ using System;
 namespace RPG.Resources{
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] float healthPoints = 100f;
+        float healthPoints = -1f;
         float maxHealth;
 
         bool isDead = false;
@@ -18,8 +18,11 @@ namespace RPG.Resources{
         }
 
         private void Start() {
-            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
-            maxHealth = healthPoints;
+            if(healthPoints < 0)
+            {
+                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+                maxHealth = healthPoints;
+            }
         }
 
         public void TakeDamage(GameObject instigator, float damage){
