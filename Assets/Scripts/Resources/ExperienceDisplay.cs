@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using RPG.Resources;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Stats
+namespace RPG.Resources
 {
     public class ExperienceDisplay : MonoBehaviour
     {
@@ -17,7 +14,7 @@ namespace RPG.Stats
 
         private void Update() {
             experience = GameObject.FindGameObjectWithTag("Player").GetComponent<Experience>();
-            text.text = experience.GetExperience().ToString();
+            text.text = experience.GetPoints().ToString();
         }
     }
 }
