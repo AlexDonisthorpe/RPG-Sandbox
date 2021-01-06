@@ -7806,6 +7806,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 538798943072222019, guid: e59d25e8a29d1b1429cdebf5de44ad12, type: 3}
+      propertyPath: levelUpFX
+      value: 
+      objectReference: {fileID: 8890995111561865595, guid: fb2d62aa04708384fa7fe2d8d395bd1c, type: 3}
     - target: {fileID: 1813230608398337942, guid: e59d25e8a29d1b1429cdebf5de44ad12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.65

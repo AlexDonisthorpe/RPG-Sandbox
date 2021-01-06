@@ -23,6 +23,21 @@ namespace RPG.Resources{
                 healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
                 maxHealth = healthPoints;
             }
+
+            BaseStats baseStats = GetComponent<BaseStats>();
+            if(baseStats != null)
+            {
+                baseStats.onLevelUp += HealOnLevelUp;
+            }
+        }
+
+        private void HealOnLevelUp()
+        {
+            maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+            if (healthPoints < maxHealth)
+            {
+                healthPoints = maxHealth;
+            }
         }
 
         public void TakeDamage(GameObject instigator, float damage){
