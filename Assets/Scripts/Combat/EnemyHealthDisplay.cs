@@ -24,7 +24,7 @@ namespace RPG.Resources
             } 
             else 
             {
-                text.text = String.Format("{0:0}%", targetHealth.GetPercentage().ToString());
+                text.text = String.Format("{0:0}/{1:0}", targetHealth.GetHealthPoints().ToString(), targetHealth.GetMaxHealthPoints());
             }
         }
     }
