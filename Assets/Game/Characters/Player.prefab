@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: levelUpFX
       value: 
       objectReference: {fileID: 8890995111561865595, guid: fb2d62aa04708384fa7fe2d8d395bd1c, type: 3}
+    - target: {fileID: 8164458582689319958, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc7b4a2f676875c4481668e37b18f0d3, type: 3}
 --- !u!1 &7092697454035159396 stripped
