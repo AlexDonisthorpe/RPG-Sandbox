@@ -9,14 +9,22 @@ namespace RPG.Cinematics{
         PlayableDirector playableDirector;
         GameObject player;
 
-        private void OnEnable() {
+        private void Awake() {
+            player = GameObject.FindWithTag("Player");
             playableDirector = GetComponent<PlayableDirector>();
+        }
+
+        private void OnEnable() {
             playableDirector.played += DisableControl;
             playableDirector.stopped += EnableControl;
         }
+
+        private void OnDisable() {
+            playableDirector.played -= DisableControl;
+            playableDirector.stopped -= EnableControl;
+        }
         
         private void Start() {
-            player = GameObject.FindWithTag("Player");
             playableDirector.Play();
         }
 
@@ -27,11 +35,6 @@ namespace RPG.Cinematics{
 
         void EnableControl(PlayableDirector stopped){
             player.GetComponent<PlayerController>().enabled = true;
-        }
-
-        private void OnDisable() {
-            playableDirector.stopped -= EnableControl;
-            playableDirector.played -= DisableControl;
         }
     }
 }

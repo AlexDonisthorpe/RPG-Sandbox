@@ -10,7 +10,7 @@ namespace RPG.Stats
         Text text;
         int level;
 
-        private void Start() {
+        private void Awake() {
             text = GetComponent<Text>();
         }
         // Update is called once per frame

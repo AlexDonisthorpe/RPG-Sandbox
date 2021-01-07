@@ -27,12 +27,16 @@ namespace RPG.Control{
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int waypointIndex = 0;
 
-        private void Start() {
+        private void Awake() 
+        {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             mover = GetComponent<Mover>();
+        }
 
+        private void Start() 
+        {
             guardPosition = transform.position;
         }
 
@@ -110,7 +114,8 @@ namespace RPG.Control{
         }
 
         // Called by Unity
-        private void OnDrawGizmosSelected() {
+        private void OnDrawGizmosSelected() 
+        {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }

@@ -13,8 +13,24 @@ namespace RPG.Resources{
 
         bool isDead = false;
 
-        public bool IsDead(){
-            return isDead;
+        BaseStats baseStats;
+
+        private void Awake() {
+            baseStats = GetComponent<BaseStats>();
+        }
+
+        private void OnEnable() {
+            if (baseStats != null)
+            {
+                baseStats.onLevelUp += HealOnLevelUp;
+            }
+        }
+
+        private void OnDisable() {
+            if (baseStats != null)
+            {
+                baseStats.onLevelUp -= HealOnLevelUp;
+            }
         }
 
         private void Start() {
@@ -22,12 +38,6 @@ namespace RPG.Resources{
             {
                 healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
                 maxHealth = healthPoints;
-            }
-
-            BaseStats baseStats = GetComponent<BaseStats>();
-            if(baseStats != null)
-            {
-                baseStats.onLevelUp += HealOnLevelUp;
             }
         }
 
@@ -38,6 +48,20 @@ namespace RPG.Resources{
             {
                 healthPoints = maxHealth;
             }
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience == null) return;
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.Experience));
+        }
+
+        private void Die()
+        {
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("dead");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         public void TakeDamage(GameObject instigator, float damage){
@@ -63,13 +87,6 @@ namespace RPG.Resources{
             return GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
-        private void Die()
-        {
-            isDead = true;
-            GetComponent<Animator>().SetTrigger("dead");
-            GetComponent<ActionScheduler>().CancelCurrentAction();
-        }
-
         public object CaptureState()
         {
             return healthPoints;
@@ -88,11 +105,9 @@ namespace RPG.Resources{
             return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
-        private void AwardExperience(GameObject instigator)
+        public bool IsDead()
         {
-            Experience experience = instigator.GetComponent<Experience>();
-            if(experience == null) return;
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.Experience));
+            return isDead;
         }
     }
 }

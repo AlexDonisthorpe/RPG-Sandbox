@@ -21,9 +21,12 @@ namespace RPG.Combat
         Mover mover;
         Weapon currentWeapon;
 
+        private void Awake() {
+            mover = GetComponent<Mover>();
+        }
+
         private void Start()
         {
-            mover = GetComponent<Mover>();
             if(currentWeapon == null)
             {
                 EquipWeapon(defaultWeapon);
@@ -73,6 +76,35 @@ namespace RPG.Combat
             return Vector3.Distance(gameObject.transform.position, target.transform.position) <= currentWeapon.GetRange();
         }
 
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("attackCancel");
+        }
+
+        // The Bow animation has a locked called to "Shoot" so just redirecting to Hit
+        void Shoot()
+        {
+            Hit();
+        }
+
+        // Hit event is triggered during the attack animation
+        void Hit()
+        {
+            if (target == null) return;
+
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
+            }
+            else
+            {
+                target.TakeDamage(gameObject, damage);
+            }
+        }
+
         public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) return false;
@@ -93,39 +125,32 @@ namespace RPG.Combat
             mover.Cancel();
         }
 
-        private void StopAttack()
-        {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("attackCancel");
-        }
-
-        // The Bow animation has a locked called to "Shoot" so just redirecting to Hit
-        void Shoot()
-        {
-            Hit();
-        }
-        // Hit event is triggered during the attack animation
-        void Hit()
-        {
-            if (target == null) return;
-
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
-
-            if (currentWeapon.HasProjectile())
-            {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
-            }
-            else
-            {
-                target.TakeDamage(gameObject, damage);
-            }
-        }
-
         public void EquipWeapon(Weapon weapon)
         {
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
             currentWeapon = weapon;
+        }
+
+        public Health GetTarget()
+        {
+            return target;
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetDamage();
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetPercentageBonus();
+            }
         }
 
         public object CaptureState()
@@ -140,25 +165,6 @@ namespace RPG.Combat
             EquipWeapon(newWeapon);
         }
 
-        public Health GetTarget()
-        {
-            return target;
-        }
 
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if(stat == Stat.Damage)
-            {
-                yield return currentWeapon.GetDamage();
-            }
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-            {
-                yield return currentWeapon.GetPercentageBonus();
-            }
-        }
     }
 }
