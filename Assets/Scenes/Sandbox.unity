@@ -7810,6 +7810,18 @@ PrefabInstance:
       propertyPath: levelUpFX
       value: 
       objectReference: {fileID: 8890995111561865595, guid: fb2d62aa04708384fa7fe2d8d395bd1c, type: 3}
+    - target: {fileID: 1375617898467974533, guid: e59d25e8a29d1b1429cdebf5de44ad12, type: 3}
+      propertyPath: cursorMappings.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375617898467974533, guid: e59d25e8a29d1b1429cdebf5de44ad12, type: 3}
+      propertyPath: cursorMappings.Array.data[4].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375617898467974533, guid: e59d25e8a29d1b1429cdebf5de44ad12, type: 3}
+      propertyPath: cursorMappings.Array.data[4].texture
+      value: 
+      objectReference: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     - target: {fileID: 1813230608398337942, guid: e59d25e8a29d1b1429cdebf5de44ad12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.65
