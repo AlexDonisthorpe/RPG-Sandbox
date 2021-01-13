@@ -81,7 +81,7 @@ namespace RPG.Combat
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(gameObject.transform.position, target.transform.position) <= currentWeapon.GetRange();
+            return Vector3.Distance(gameObject.transform.position, target.transform.position) <= currentWeapon.value.GetRange();
         }
 
         private void StopAttack()
