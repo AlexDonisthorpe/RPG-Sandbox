@@ -4,17 +4,13 @@ using RPG.Combat;
 using RPG.Resources;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
-
-        [SerializeField] LayerMask layerToIgnore;
-
         Health health;
-
-
 
         [System.Serializable]
         struct CursorMapping
@@ -25,6 +21,8 @@ namespace RPG.Control
         }
 
         [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] LayerMask layerToIgnore;
+        [SerializeField] float maxNavMeshProjectionDistance = 1f;
 
         private void Awake() {
             health = GetComponent<Health>();
@@ -89,19 +87,41 @@ namespace RPG.Control
 
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
+            // RaycastHit hit;
 
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit, 200f, ~layerToIgnore);
+            // bool hasHit = Physics.Raycast(GetMouseRay(), out hit, 200f, ~layerToIgnore);
+
+            Vector3 target;
+            bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {
                 if (Input.GetMouseButton(1))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(CursorType.Movement);
                 return true;
             }
             return false;
+        }
+
+        private bool RaycastNavMesh(out Vector3 target)
+        {
+            target = new Vector3();
+
+            RaycastHit rayHit;
+            NavMeshHit navMeshHit;
+            
+            bool hasHit = Physics.Raycast(GetMouseRay(), out rayHit, 200f, ~layerToIgnore);
+            if (!hasHit) return false;
+            
+            bool hasCastToNavMesh = NavMesh.SamplePosition(target, 
+                out navMeshHit, maxNavMeshProjectionDistance, 
+                    NavMesh.AllAreas);
+            if(!hasCastToNavMesh) return false;
+
+            target = navMeshHit.position;
+            return true;
         }
 
         private void SetCursor(CursorType type)
