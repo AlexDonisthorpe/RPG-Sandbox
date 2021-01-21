@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +15,9 @@ namespace RPG.UI.DamageText
             textField = GetComponentInChildren<Text>();    
         }
 
-        public void SetDamageValue(float value)
+        public void SetValue(float value)
         {
-            textField.text = value.ToString();
+            textField.text = String.Format("{0:0}", value);
         }
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine.Events;
 namespace RPG.Resources{
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] UnityEvent takeDamage;
+        [SerializeField] UnityEvent<float> takeDamage;
 
         LazyValue<float> healthPoints;
         float maxHealth;
@@ -78,16 +78,14 @@ namespace RPG.Resources{
             if(isDead) return;
 
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
-            
+            takeDamage.Invoke(damage);
+
+
             if (healthPoints.value == 0)
             {
                 AwardExperience(instigator);
                 Die();
             } 
-            else 
-            {
-                takeDamage.Invoke();
-            }
         }
 
         public float GetHealthPoints()
