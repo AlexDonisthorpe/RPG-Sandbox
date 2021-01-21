@@ -2,12 +2,12 @@ using UnityEngine;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
-using RPG.Resources;
+using RPG.Attributes;
 using System;
 using GameDevTV.Utils;
 using UnityEngine.Events;
 
-namespace RPG.Resources{
+namespace RPG.Attributes{
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] UnityEvent<float> takeDamage;
@@ -112,8 +112,14 @@ namespace RPG.Resources{
             }
         }
 
-        public float GetPercentage(){
-            return 100 * (healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health));
+        public float GetPercentage()
+        {
+            return 100 * GetFraction();
+        }
+
+        public float GetFraction()
+        {
+            return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         public bool IsDead()
