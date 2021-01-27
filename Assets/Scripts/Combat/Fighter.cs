@@ -14,19 +14,19 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-        [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] WeaponConfig defaultWeapon = null;
         [SerializeField] string defaultWeaponName = "Unarmed";
 
         float timeSinceLastAttack = Mathf.Infinity;
         Health target;
         Mover mover;
-        LazyValue<Weapon> currentWeapon;
+        LazyValue<WeaponConfig> currentWeapon;
 
         private void Awake() {
             mover = GetComponent<Mover>();
             if (currentWeapon == null)
             {
-                currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+                currentWeapon = new LazyValue<WeaponConfig>(SetupDefaultWeapon);
             }
         }
 
@@ -57,7 +57,7 @@ namespace RPG.Combat
             }
         }
 
-        private Weapon SetupDefaultWeapon()
+        private WeaponConfig SetupDefaultWeapon()
         {
             AttachWeapon(defaultWeapon);
             return defaultWeapon;
@@ -133,13 +133,13 @@ namespace RPG.Combat
             mover.Cancel();
         }
 
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
         {
             AttachWeapon(weapon);
             currentWeapon.value = weapon;
         }
 
-        private void AttachWeapon(Weapon weapon)
+        private void AttachWeapon(WeaponConfig weapon)
         {
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
@@ -174,7 +174,7 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            Weapon newWeapon = UnityEngine.Resources.Load<Weapon>(weaponName);
+            WeaponConfig newWeapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(newWeapon);
         }
 
