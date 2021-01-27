@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1520039310118123106}
   - component: {fileID: 7345476988829398854}
-  - component: {fileID: 5087303410587496722}
   m_Layer: 0
   m_Name: Launch SFX
   m_TagString: Untagged
@@ -42,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: be04e3f4e348d08438b4ce2e92a586d2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -128,22 +127,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5087303410587496722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834090979476075834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd7af59a6afd8f247ae0553c10955055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: be04e3f4e348d08438b4ce2e92a586d2, type: 3}
-  lowerPitchRange: 0.8
-  higherPitchRange: 2
 --- !u!1 &1985434641684580476
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +183,19 @@ MonoBehaviour:
   - {fileID: 2839310282990157882}
   projectileHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8421724130305494549}
+        m_TargetAssemblyTypeName: RPG.Audio.RandomAudio, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1502209451976547160
 BoxCollider:
   m_ObjectHideFlags: 0

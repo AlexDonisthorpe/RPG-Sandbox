@@ -94,7 +94,6 @@ namespace RPG.Control
             {
                 if (Input.GetMouseButton(1))
                 {
-                    Debug.Log(target);
                     GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(CursorType.Movement);
