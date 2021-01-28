@@ -50,7 +50,7 @@ namespace RPG.Combat
 
         public bool HandleRaycast(PlayerController callingController)
         {
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
                 Pickup(callingController.gameObject);
             }

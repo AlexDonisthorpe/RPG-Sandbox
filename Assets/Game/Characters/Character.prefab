@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5.66
+  maxNavPathLength: 200
 --- !u!95 &1704982270
 Animator:
   serializedVersion: 3
